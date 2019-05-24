@@ -1,0 +1,12 @@
+name: rapidjson
+version: 1.1.1
+maintainer: Yixin Yang <yixin.yang@tusimple.ai>
+
+build: |
+  export CMAKE_PREFIX_PATH=$INSTALL_DIR:$CMAKE_PREFIX_PATH
+  [[ -n $CLEANUP ]] && rm -f build
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ..
+  make -j8
+  make install
